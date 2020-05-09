@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loan_app/constants.dart';
 
 class DashboardLoan extends StatefulWidget {
   @override
@@ -161,7 +162,9 @@ class _DashboardLoanState extends State<DashboardLoan> {
                 shape: RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(5.0),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, loanRequestOneRoute);
+                },
                 child: Text(
                   'Repay Loan Now',
                   style: TextStyle(color: Colors.white, fontSize: 18),

@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:loan_app/constants.dart';
+import 'dart:io';
 
-import 'login_pass.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:loan_app/constants.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -10,43 +11,56 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   @override
+  Future<bool> _onBackPressed() {
+    //Navigator.of(context).pop();
+    exit(0);
+  }
+
   Widget build(BuildContext context) {
-    return Scaffold(
-    resizeToAvoidBottomPadding: true,
-    // appBar: AppBar(
-    //   title: Text('Welcome Tolu', style: TextStyle(fontWeight: FontWeight.bold),),
-    // ),
-    body: SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                //Icon(Icons.favorite),
-                Container(
-                    margin: EdgeInsets.only(top: 70),
-                    child: Image.asset('images/logo.png')),
-              ],
-            ),
-            Container(
-              margin: const EdgeInsets.only(top: 38),
-              child: Text(
-                'Welcome ',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.teal,
-                ),
-              ),
-            ),
-            textSection,
-           _pageForm(context),
-          ]),
-    ),
-  );
+    return WillPopScope(
+      onWillPop: _onBackPressed,
+      child: Scaffold(
+        resizeToAvoidBottomPadding: true,
+        // appBar: AppBar(
+        //   title: Text('Welcome Tolu', style: TextStyle(fontWeight: FontWeight.bold),),
+        // ),
+        body: AnnotatedRegion<SystemUiOverlayStyle>(
+          value: SystemUiOverlayStyle.light.copyWith(
+           // statusBarColor: Colors.white,
+          ),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      //Icon(Icons.favorite),
+                      Container(
+                          margin: EdgeInsets.only(top: 70),
+                          child: Image.asset('images/logo.png')),
+                    ],
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 38),
+                    child: Text(
+                      'Welcome ',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.teal,
+                      ),
+                    ),
+                  ),
+                  textSection,
+                  _pageForm(context),
+                ]),
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -60,7 +74,6 @@ Widget textSection = Container(
   ),
 );
 
-
 Widget _pageForm(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.fromLTRB(20, 40, 20, 8),
@@ -68,11 +81,15 @@ Widget _pageForm(BuildContext context) {
       children: [
         TextField(
           obscureText: false,
+          autofocus: false,
           keyboardType: TextInputType.phone,
           maxLength: 11,
           decoration: InputDecoration(
-            border: OutlineInputBorder(borderSide: BorderSide(color: Colors.teal)),
-            fillColor: Colors.teal,
+            floatingLabelBehavior: FloatingLabelBehavior.never,
+            border:
+                OutlineInputBorder(borderSide: BorderSide(color: Colors.teal)),
+            fillColor: Colors.grey[100],
+            filled: true,
             labelText: 'Enter Phone Number',
           ),
         ),
@@ -97,13 +114,13 @@ Widget _pageForm(BuildContext context) {
                   fontSize: 20),
             ),
             onPressed: () {
-            //   Navigator.push(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => LoginPass()),
-              
-            // );
-            Navigator.pushNamed(context, loginPassRoute);
-            //Navigator.of(context).popUntil(ModalRoute.withName(dashboardRoute));
+              //   Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => LoginPass()),
+
+              // );
+              Navigator.pushNamed(context, loginPassRoute);
+              //Navigator.of(context).popUntil(ModalRoute.withName(dashboardRoute));
             },
           ),
         ),

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:loan_app/constants.dart';
+import 'package:loan_app/widgets/login.dart';
 import 'dashboard_home.dart';
 import 'dashboard_loan.dart';
 import 'dashboard_history.dart';
@@ -34,8 +37,8 @@ class _DashboardState extends State<Dashboard> {
       return showDialog(
             context: context,
             builder: (context) => new AlertDialog(
-              title: new Text('Are you sure?'),
-              content: new Text('Do you want to exit an App'),
+              title: new Text('Logout!'),
+              content: new Text('Are you sure you want to logout?'),
               actions: <Widget>[
                 new GestureDetector(
                   onTap: () => Navigator.of(context).pop(false),
@@ -43,7 +46,10 @@ class _DashboardState extends State<Dashboard> {
                 ),
                 SizedBox(height: 16),
                 new GestureDetector(
-                  onTap: () => Navigator.of(context).pop(true),
+                  onTap: () => {
+                    //SystemChannels.platform.invokeMethod<void>('SystemNavigator.pop'),
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => Login())),
+                  },
                   child: Text("YES"),
                 ),
               ],
@@ -56,15 +62,18 @@ class _DashboardState extends State<Dashboard> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {  
     return WillPopScope(
       onWillPop: _onBackPressed,
       child: Scaffold(       
-        body: Container(
-            child: IndexedStack(
-          index: _selectedIndex,
-          children: _widgetOptions,
-        )),
+        body: AnnotatedRegion<SystemUiOverlayStyle>(
+          value: SystemUiOverlayStyle.light.copyWith( statusBarColor: Colors.white, ), 
+                  child: Container(
+              child: IndexedStack(
+            index: _selectedIndex,
+            children: _widgetOptions,
+          )),
+        ),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(

@@ -87,15 +87,28 @@ Widget _pageForm(BuildContext context) {
         TextField(
           obscureText: true,
           keyboardType: TextInputType.text,
-          style: TextStyle(color: Colors.white),
-          textInputAction: TextInputAction.send,        
-          decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.white),
-            ),
-            fillColor: Colors.white,
-            labelText: 'Enter Password',
-          ),
+          style: TextStyle(color: Colors.black54, fontSize: 18.0),
+          cursorColor: Colors.grey,
+          textInputAction: TextInputAction.send, 
+          onSubmitted: (value) {
+            print(value);
+          },
+          decoration: new InputDecoration(
+                fillColor: Colors.teal[100],
+                filled: true,
+                labelText: 'Enter Password',
+                floatingLabelBehavior: FloatingLabelBehavior.never,
+                hintStyle: TextStyle(color: Colors.white),
+                labelStyle: TextStyle(color: Colors.black54, fontSize: 18.0, ),
+                border: new OutlineInputBorder(
+                  borderRadius: new BorderRadius.circular(5.0),
+                  borderSide: BorderSide.none,
+                ),
+                focusedBorder: new OutlineInputBorder(
+                  borderRadius: new BorderRadius.circular(10.0),
+                  borderSide: new BorderSide(color: Colors.white, width: 2.0),                  
+                ),
+              ),
         ),
         const SizedBox(height: 20),
         Container(
