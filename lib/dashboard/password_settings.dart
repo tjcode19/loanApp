@@ -10,27 +10,23 @@ class _PasswordSettingsState extends State<PasswordSettings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.grey[50],
+        elevation: 0.0,
+        leading: IconButton(
+          color: Colors.black,
+          iconSize: 30.0,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.close),
+        ),
+      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         padding: EdgeInsets.all(10),
         child: Column(children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              //Icon(Icons.favorite),
-              Container(
-                margin: EdgeInsets.only(top: 30),
-                child: IconButton(
-                  color: Colors.black,
-                  iconSize: 30.0,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: Icon(Icons.close),
-                ),
-              ),
-            ],
-          ),
+          
           Row(
             children: [
               Container(
@@ -52,7 +48,7 @@ class _PasswordSettingsState extends State<PasswordSettings> {
                 child: Container(
                   margin: EdgeInsets.only(top: 4, left: 15),
                   child: Text(
-                    'Wallet balance is: N20,000.00',
+                    'Change your password to a new one',
                     style: TextStyle(
                       fontSize: 13,
                       color: Colors.black38,
@@ -64,24 +60,7 @@ class _PasswordSettingsState extends State<PasswordSettings> {
               ),
             ],
           ),
-          Row(
-            children: [
-              Expanded(
-                child: Container(
-                  margin: EdgeInsets.only(top: 4, left: 15),
-                  child: Text(
-                    'Complete the form below to withdraw money from your wallet. ',
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: Colors.black38,
-                    ),
-                    softWrap: true,
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-            ],
-          ),
+         
           const SizedBox(height: 40),
           Row(
             children: [
@@ -89,7 +68,7 @@ class _PasswordSettingsState extends State<PasswordSettings> {
                 child: Container(
                   margin: EdgeInsets.only(top: 4, left: 15),
                   child: Text(
-                    'Enter amount to withdraw',
+                    'What is the current password?',
                     style: TextStyle(
                       fontSize: 15,
                       color: Colors.black87,
@@ -120,7 +99,7 @@ class _PasswordSettingsState extends State<PasswordSettings> {
                 child: Container(
                   margin: EdgeInsets.only(top: 4, left: 15),
                   child: Text(
-                    'Where should we send the money?',
+                    'Enter a new password',
                     style: TextStyle(
                       fontSize: 15,
                       color: Colors.black87,
@@ -140,9 +119,7 @@ class _PasswordSettingsState extends State<PasswordSettings> {
               decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.teal)),
-                  fillColor: Colors.teal,
-                  labelText: '00',
-                  hasFloatingPlaceholder: true),
+                  fillColor: Colors.teal,),
             ),
           ),
           Row(
@@ -151,7 +128,7 @@ class _PasswordSettingsState extends State<PasswordSettings> {
                 child: Container(
                   margin: EdgeInsets.only(top: 4, left: 15),
                   child: Text(
-                    'Select bank',
+                    'Confirm your new password',
                     style: TextStyle(
                       fontSize: 15,
                       color: Colors.black87,
@@ -176,37 +153,7 @@ class _PasswordSettingsState extends State<PasswordSettings> {
               ),
             ),
           ),
-          Row(
-            children: [
-              Expanded(
-                child: Container(
-                  margin: EdgeInsets.only(top: 4, left: 15),
-                  child: Text(
-                    'Select bank',
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.black87,
-                    ),
-                    softWrap: true,
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Container(
-            padding: EdgeInsets.only(left: 15, right: 15, top: 5),
-            child: TextField(
-              obscureText: true,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.teal)),
-                fillColor: Colors.teal,
-                labelText: '',
-              ),
-            ),
-          ),
+         
           const SizedBox(height: 40),
           Container(
             width: double.infinity,
@@ -222,7 +169,7 @@ class _PasswordSettingsState extends State<PasswordSettings> {
                 borderRadius: new BorderRadius.circular(10.0),
               ),
               child: Text(
-                "Complete Withdrawal",
+                "Change Password",
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
@@ -292,7 +239,7 @@ class _PasswordSettingsState extends State<PasswordSettings> {
             children: <Widget>[
               Icon(Icons.check),
               const SizedBox(height: 10),
-              Text('Withdrawal Successfully', style: TextStyle(fontSize: 22), textAlign: TextAlign.center,),
+              Text('Password Changed Successfully', style: TextStyle(fontSize: 22), textAlign: TextAlign.center,),
               Container(
                 width: double.infinity,
                 margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
@@ -314,7 +261,8 @@ class _PasswordSettingsState extends State<PasswordSettings> {
                         fontSize: 20),
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(context, dashboardRoute);
+                    Navigator.pop(context);
+                    Navigator.pop(context);
                   },
                 ),
               ),

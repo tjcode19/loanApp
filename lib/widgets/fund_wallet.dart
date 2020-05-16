@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loan_app/constants.dart';
 
 class FundWallet extends StatefulWidget {
   @override
@@ -18,7 +19,7 @@ class _FundWalletState extends State<FundWallet> {
             children: [
               //Icon(Icons.favorite),
               Container(
-                margin: EdgeInsets.only(top: 30),
+                margin: EdgeInsets.only(top: 20),
                 child: IconButton(
                   color: Colors.black,
                   iconSize: 30.0,
@@ -33,7 +34,7 @@ class _FundWalletState extends State<FundWallet> {
           Row(
             children: [
               Container(
-                margin: EdgeInsets.only(top: 37, left: 15),
+                margin: EdgeInsets.only(top: 10, left: 15),
                 child: Text(
                   'Fund Wallet ',
                   style: TextStyle(
@@ -63,12 +64,11 @@ class _FundWalletState extends State<FundWallet> {
               ),
             ],
           ),
-          const SizedBox(height: 40),
           Row(
             children: [
               Expanded(
                 child: Container(
-                  margin: EdgeInsets.only(top: 4, left: 15),
+                  margin: EdgeInsets.only(top: 14, left: 15),
                   child: Text(
                     'How much do you want add to wallet? ',
                     style: TextStyle(
@@ -84,23 +84,35 @@ class _FundWalletState extends State<FundWallet> {
           ),
           Container(
             padding: EdgeInsets.only(left: 15, right: 15, top: 5),
-            child: TextField(
-              obscureText: false,
-              keyboardType: TextInputType.phone,
-              maxLength: 11,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.teal)),
-                fillColor: Colors.teal,
-                labelText: 'Enter Phone Number',
+            child: TextFormField(
+              decoration: new InputDecoration(
+                fillColor: Colors.grey[200],
+                filled: true,
+                border: new OutlineInputBorder(
+                  borderRadius: new BorderRadius.circular(5.0),
+                  borderSide: BorderSide.none,
+                ),
+                focusedBorder: new OutlineInputBorder(
+                  borderRadius: new BorderRadius.circular(10.0),
+                  borderSide: new BorderSide(
+                      color: Theme.of(context).primaryColor, width: 2.0),
+                ),
               ),
+              validator: (val) {
+                if (val.length == 0) {
+                  return "Amount cannot be empty";
+                } else {
+                  return null;
+                }
+              },
+              keyboardType: TextInputType.number,
             ),
           ),
           Row(
             children: [
               Expanded(
                 child: Container(
-                  margin: EdgeInsets.only(top: 4, left: 15),
+                  margin: EdgeInsets.only(top: 24, left: 15),
                   child: Text(
                     'Where should we debit the money? ',
                     style: TextStyle(
@@ -141,7 +153,13 @@ class _FundWalletState extends State<FundWallet> {
                 Icons.add,
                 size: 30,
               ),
-              //onTap: setSelectedRadio(value),
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  cardSettingsRoute,
+                );
+                print('Add New Card');
+              },
             ),
           ),
           const SizedBox(height: 40),
@@ -160,11 +178,13 @@ class _FundWalletState extends State<FundWallet> {
               child: Text(
                 "Proceed",
                 style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    fontSize: 20),
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
               ),
               onPressed: () {
+                _settingModalBottomSheet(context);
               },
             ),
           ),
@@ -194,7 +214,7 @@ class _FundWalletState extends State<FundWallet> {
         trailing: Radio(
           value: value,
           groupValue: selectedRadio,
-          activeColor: Colors.blue,
+          activeColor: Colors.teal,
           onChanged: (val) {
             print("Radio $val");
             setSelectedRadio(val);
@@ -202,6 +222,71 @@ class _FundWalletState extends State<FundWallet> {
         ),
         //onTap: setSelectedRadio(value),
       ),
+    );
+  }
+
+  
+  void _settingModalBottomSheet(context) {
+    showModalBottomSheet(
+      isDismissible: false,
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (BuildContext bc) {
+        return Container(
+          height: 260,
+          margin: EdgeInsets.only(right: 5, left: 5),
+          decoration: BoxDecoration(
+        color: Colors.white,
+        //borderRadius: BorderRadius.all(Radius.circular(15)),
+        borderRadius: BorderRadius.only(topLeft:Radius.circular(15), topRight:Radius.circular(15), ),
+        boxShadow: [
+          BoxShadow(
+              blurRadius: 8, color: Colors.grey[300], spreadRadius: 2)
+        ]),
+          padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Image.asset("assets/images/check_ic_lg.png", height: 50.0, width: 50.0,),
+              const SizedBox(height: 10),
+              Container(
+                margin: EdgeInsets.fromLTRB(60, 10, 60, 20),
+                width: 180.0,
+                  child: Text(
+                'Funding Successful',
+                style: TextStyle(fontSize: 22),
+                softWrap: true,
+                textAlign: TextAlign.center,
+              )),
+              Container(
+                width: double.infinity,
+                margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                child: RaisedButton(
+                  padding: EdgeInsets.all(16),
+                  highlightElevation: 5.0,
+                  elevation: 3.0,
+                  splashColor: Colors.teal[100],
+                  highlightColor: Colors.teal[200],
+                  color: Color.fromRGBO(45, 157, 127, 1),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(10.0),
+                  ),
+                  child: Text(
+                    "Dismiss",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontSize: 20),
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, dashboardRoute);
+                  },
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

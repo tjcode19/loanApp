@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:loan_app/constants.dart';
 
 class CardSettings extends StatefulWidget {
@@ -19,7 +20,7 @@ class _CardSettingsState extends State<CardSettings> {
             children: [
               //Icon(Icons.favorite),
               Container(
-                margin: EdgeInsets.only(top: 30),
+                margin: EdgeInsets.only(top: 20),
                 child: IconButton(
                   color: Colors.black,
                   iconSize: 30.0,
@@ -34,7 +35,7 @@ class _CardSettingsState extends State<CardSettings> {
           Row(
             children: [
               Container(
-                margin: EdgeInsets.only(top: 37, left: 15),
+                margin: EdgeInsets.only(top: 10, left: 15),
                 child: Text(
                   'My Card & Setting',
                   style: TextStyle(
@@ -66,11 +67,7 @@ class _CardSettingsState extends State<CardSettings> {
           ),
           const SizedBox(height: 40),
           _cardActions(
-            Icon(
-              Icons.card_membership,
-              size: 32,
-              color: Colors.black54,
-            ),
+            SvgPicture.asset("assets/images/svg_payment_card.svg", color: Colors.black, ),
             Text(
               'Debit Cards',
               style: TextStyle(fontSize: 18),
@@ -79,11 +76,7 @@ class _CardSettingsState extends State<CardSettings> {
             availableCardsRoute,
           ),
           _cardActions(
-            Icon(
-              Icons.home,
-              size: 32,
-              color: Colors.black45,
-            ),
+            SvgPicture.asset("assets/images/svg_bank.svg", color: Colors.black,),
             Text(
               'Banks',
               style: TextStyle(fontSize: 18),
@@ -110,11 +103,11 @@ class _CardSettingsState extends State<CardSettings> {
   }
 
   Widget _cardActions(
-      Icon leadingIcon, Text title, Icon trailingIcon, String routeName) {
+      SvgPicture leadingIcon, Text title, Icon trailingIcon, String routeName) {
     return Card(
       child: ListTile(
-        contentPadding: EdgeInsets.all(6),
-        leading: Container(child: leadingIcon),
+        contentPadding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+        leading: Container(child: leadingIcon), 
         title: title,
         trailing: trailingIcon,
         onTap: () {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loan_app/constants.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class UpdateKYC extends StatefulWidget {
   @override
@@ -10,31 +10,26 @@ class _UpdateKYCState extends State<UpdateKYC> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.grey[50],
+        elevation: 0.0,
+        leading: IconButton(
+          color: Colors.black,
+          iconSize: 30.0,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.close),
+        ),
+      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(8),
         child: Column(children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              //Icon(Icons.favorite),
-              Container(
-                margin: EdgeInsets.only(top: 30),
-                child: IconButton(
-                  color: Colors.black,
-                  iconSize: 30.0,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: Icon(Icons.close),
-                ),
-              ),
-            ],
-          ),
-          Row(
             children: [
               Container(
-                margin: EdgeInsets.only(top: 37, left: 15),
+                margin: EdgeInsets.only(left: 15),
                 child: Text(
                   'Update Your KYC',
                   style: TextStyle(
@@ -83,7 +78,7 @@ class _UpdateKYCState extends State<UpdateKYC> {
               ),
             ],
           ),
-          const SizedBox(height: 40),
+          const SizedBox(height: 20),
           Row(
             children: [
               Expanded(
@@ -306,23 +301,38 @@ class _UpdateKYCState extends State<UpdateKYC> {
       backgroundColor: Colors.transparent,
       builder: (BuildContext bc) {
         return Container(
-          height: 160,
+          height: 260,
           margin: EdgeInsets.only(right: 5, left: 5),
           decoration: BoxDecoration(
-        color: Colors.white,
-        //borderRadius: BorderRadius.all(Radius.circular(15)),
-        borderRadius: BorderRadius.only(topLeft:Radius.circular(15), topRight:Radius.circular(15), ),
-        boxShadow: [
-          BoxShadow(
-              blurRadius: 8, color: Colors.grey[300], spreadRadius: 2)
-        ]),
+              color: Colors.white,
+              //borderRadius: BorderRadius.all(Radius.circular(15)),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(15),
+                topRight: Radius.circular(15),
+              ),
+              boxShadow: [
+                BoxShadow(
+                    blurRadius: 8, color: Colors.grey[300], spreadRadius: 2)
+              ]),
           padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Icon(Icons.check),
+              Image.asset(
+                'assets/images/check_ic_lg.png',
+                width: 50.0,
+                height: 50.0,
+              ),
               const SizedBox(height: 10),
-              Text('Account Updated Successfully', style: TextStyle(fontSize: 22), textAlign: TextAlign.center,),
+              Container(
+                margin: EdgeInsets.fromLTRB(60, 10, 60, 20),
+
+                  child: Text(
+                'Account Updated Successfully',
+                style: TextStyle(fontSize: 22),
+                softWrap: true,
+                textAlign: TextAlign.center,
+              )),
               Container(
                 width: double.infinity,
                 margin: EdgeInsets.fromLTRB(15, 0, 15, 0),

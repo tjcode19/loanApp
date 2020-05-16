@@ -48,7 +48,8 @@ class _DashboardHomeState extends State<DashboardHome> {
                 children: <Widget>[
                   Container(
                     //color: Theme.of(context).primaryColor,
-                    padding: EdgeInsets.only(left:24, right:24, top:14, bottom:14),
+                    padding: EdgeInsets.only(
+                        left: 24, right: 24, top: 14, bottom: 14),
                     decoration: new BoxDecoration(
                       color: Theme.of(context).primaryColor,
                       borderRadius:
@@ -167,26 +168,31 @@ class _DashboardHomeState extends State<DashboardHome> {
                 //Creates even space between each item and their parent container
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  Container(
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          padding: EdgeInsets.all(10),
-                          margin: EdgeInsets.only(top: 10, bottom: 10),
-                          child: Icon(
-                            Icons.home,
-                            size: 32,
-                            color: Colors.teal,
-                          ),
-                          decoration: new BoxDecoration(
-                            color: Colors.teal[100],
-                            borderRadius: new BorderRadius.all(
-                              const Radius.circular(5.0),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, fundWalletRoute);
+                    },
+                    child: Container(
+                      child: Column(
+                        children: <Widget>[
+                          Container(
+                            padding: EdgeInsets.all(10),
+                            margin: EdgeInsets.only(top: 10, bottom: 10),
+                            child: Icon(
+                              Icons.home,
+                              size: 32,
+                              color: Colors.teal,
+                            ),
+                            decoration: new BoxDecoration(
+                              color: Colors.teal[100],
+                              borderRadius: new BorderRadius.all(
+                                const Radius.circular(5.0),
+                              ),
                             ),
                           ),
-                        ),
-                        Text('View Cart'),
-                      ],
+                          Text('Store'),
+                        ],
+                      ),
                     ),
                   ),
                   GestureDetector(
@@ -348,7 +354,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                     ),
                     Container(
                       color: Color.fromRGBO(239, 255, 224, 1),
-                      height: 130,                      
+                      height: 130,
                       padding: EdgeInsets.all(5),
                       margin: EdgeInsets.only(bottom: 10),
                       child: Column(

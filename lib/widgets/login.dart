@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:loading/indicator/ball_pulse_indicator.dart';
+import 'package:loading/loading.dart';
 import 'package:loan_app/constants.dart';
 
 class Login extends StatefulWidget {
@@ -26,8 +28,8 @@ class _LoginState extends State<Login> {
         // ),
         body: AnnotatedRegion<SystemUiOverlayStyle>(
           value: SystemUiOverlayStyle.light.copyWith(
-           // statusBarColor: Colors.white,
-          ),
+              // statusBarColor: Colors.white,
+              ),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
@@ -39,14 +41,23 @@ class _LoginState extends State<Login> {
                     children: [
                       //Icon(Icons.favorite),
                       Container(
-                          margin: EdgeInsets.only(top: 70),
+                          margin: EdgeInsets.only(top: 80),
                           child: Image.asset('images/logo.png')),
                     ],
                   ),
+                  // Container(
+                  //   color: Colors.lightBlue,
+                  //   child: Center(
+                  //     child: Loading(
+                  //         indicator: BallPulseIndicator(),
+                  //         size: 100.0,
+                  //         color: Colors.pink),
+                  //   ),
+                  // ),
                   Container(
                     margin: const EdgeInsets.only(top: 38),
                     child: Text(
-                      'Welcome ',
+                      'Welcome to LOGICOOP',
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,

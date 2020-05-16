@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:loan_app/constants.dart';
 
 class DashboardAccount extends StatefulWidget {
@@ -9,6 +10,9 @@ class DashboardAccount extends StatefulWidget {
 class _DashboardAccountState extends State<DashboardAccount> {
   static const TextStyle optionStyle =
       TextStyle(color: Colors.black, fontSize: 18);
+
+  double iconH = 23;
+  double iconW = 18;
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +31,11 @@ class _DashboardAccountState extends State<DashboardAccount> {
           child: Column(
             children: <Widget>[
               _cardActions(
-                Icon(
-                  Icons.person,
-                  size: 32,
-                  color: Colors.purple,
+                SvgPicture.asset(
+                  'assets/images/svg_basic_info.svg', 
+                  color: Colors.purple[100],
+                  height: iconH,
+                  width: iconW,
                 ),
                 Text(
                   'Basic Information',
@@ -40,10 +45,11 @@ class _DashboardAccountState extends State<DashboardAccount> {
                 basicInfoRoute,
               ),
               _cardActions(
-                Icon(
-                  Icons.picture_in_picture,
-                  size: 32,
-                  color: Colors.teal,
+                SvgPicture.asset(
+                  'assets/images/svg_kyc.svg', 
+                  color: Colors.greenAccent,
+                  height: iconH,
+                  width:60,
                 ),
                 Text(
                   'Update KYC',
@@ -53,10 +59,11 @@ class _DashboardAccountState extends State<DashboardAccount> {
                 updateKYCRoute,
               ),
               _cardActions(
-                Icon(
-                  Icons.satellite,
-                  size: 32,
-                  color: Colors.blue,
+                SvgPicture.asset(
+                  'assets/images/svg_bvn.svg',
+                  color: Colors.blue[200],
+                  height: iconH,
+                  width: iconW,
                 ),
                 Text(
                   'Add BVN',
@@ -66,10 +73,11 @@ class _DashboardAccountState extends State<DashboardAccount> {
                 addBVNRoute,
               ),
               _cardActions(
-                Icon(
-                  Icons.lock,
-                  size: 32,
-                  color: Colors.green,
+                SvgPicture.asset(
+                  'assets/images/svg_lock.svg',
+                  color: Colors.green[200],
+                  height: iconH,
+                  width: iconW,
                 ),
                 Text(
                   'Password Settings',
@@ -79,10 +87,11 @@ class _DashboardAccountState extends State<DashboardAccount> {
                 passwordRoute,
               ),
               _cardActions(
-                Icon(
-                  Icons.card_membership,
-                  size: 32,
-                  color: Colors.orange,
+                SvgPicture.asset(
+                  'assets/images/svg_payment_card.svg',
+                  color: Colors.amber,
+                  height: iconH,
+                  width: iconW,
                 ),
                 Text(
                   'My Card & Setting',
@@ -96,7 +105,8 @@ class _DashboardAccountState extends State<DashboardAccount> {
     );
   }
 
-  Widget _cardActions(Icon leadingIcon, Text title, Icon trailingIcon, String routeName) {
+  Widget _cardActions(
+      SvgPicture leadingIcon, Text title, Icon trailingIcon, String routeName) {
     return Card(
       child: ListTile(
         contentPadding: EdgeInsets.all(10),

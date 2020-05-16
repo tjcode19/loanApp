@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:loan_app/constants.dart';
 import 'package:loan_app/router.dart';
 
@@ -20,7 +21,7 @@ class _WithdrawFundState extends State<WithdrawFund> {
             children: [
               //Icon(Icons.favorite),
               Container(
-                margin: EdgeInsets.only(top: 30),
+                margin: EdgeInsets.only(top: 20),
                 child: IconButton(
                   color: Colors.black,
                   iconSize: 30.0,
@@ -35,7 +36,7 @@ class _WithdrawFundState extends State<WithdrawFund> {
           Row(
             children: [
               Container(
-                margin: EdgeInsets.only(top: 37, left: 15),
+                margin: EdgeInsets.only(top: 10, left: 15),
                 child: Text(
                   'Withdraw Money',
                   style: TextStyle(
@@ -55,8 +56,9 @@ class _WithdrawFundState extends State<WithdrawFund> {
                   child: Text(
                     'Wallet balance is: N20,000.00',
                     style: TextStyle(
-                      fontSize: 13,
-                      color: Colors.black38,
+                      fontSize: 15,
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold,
                     ),
                     softWrap: true,
                     textAlign: TextAlign.left,
@@ -104,15 +106,28 @@ class _WithdrawFundState extends State<WithdrawFund> {
           ),
           Container(
             padding: EdgeInsets.only(left: 15, right: 15, top: 5),
-            child: TextField(
-              obscureText: false,
-              keyboardType: TextInputType.phone,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.teal)),
-                fillColor: Colors.teal,
-                labelText: '',
+            child: TextFormField(
+              decoration: new InputDecoration(
+                fillColor: Colors.grey[200],
+                filled: true,
+                border: new OutlineInputBorder(
+                  borderRadius: new BorderRadius.circular(5.0),
+                  borderSide: BorderSide.none,
+                ),
+                focusedBorder: new OutlineInputBorder(
+                  borderRadius: new BorderRadius.circular(10.0),
+                  borderSide: new BorderSide(color: Theme.of(context).primaryColor, width: 2.0),
+                ),
               ),
+              validator: (val) {
+                if (val.length == 0) {
+                  return "Amount cannot be empty";
+                } else {
+                  return null;
+                }
+              },
+              keyboardType: TextInputType.number,
+              
             ),
           ),
           Row(
@@ -133,17 +148,30 @@ class _WithdrawFundState extends State<WithdrawFund> {
               ),
             ],
           ),
-          Container(
+           Container(
             padding: EdgeInsets.only(left: 15, right: 15, top: 5),
-            child: TextField(
-              obscureText: false,
+            child: TextFormField(
+              decoration: new InputDecoration(
+                fillColor: Colors.grey[200],
+                filled: true,
+                border: new OutlineInputBorder(
+                  borderRadius: new BorderRadius.circular(5.0),
+                  borderSide: BorderSide.none,
+                ),
+                focusedBorder: new OutlineInputBorder(
+                  borderRadius: new BorderRadius.circular(10.0),
+                  borderSide: new BorderSide(color: Theme.of(context).primaryColor, width: 2.0),
+                ),
+              ),
+              validator: (val) {
+                if (val.length == 0) {
+                  return "You must enter account number";
+                } else {
+                  return null;
+                }
+              },
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.teal)),
-                  fillColor: Colors.teal,
-                  labelText: '00',
-                  hasFloatingPlaceholder: true),
+              
             ),
           ),
           Row(
@@ -164,17 +192,30 @@ class _WithdrawFundState extends State<WithdrawFund> {
               ),
             ],
           ),
-          Container(
+           Container(
             padding: EdgeInsets.only(left: 15, right: 15, top: 5),
-            child: TextField(
-              obscureText: false,
-              keyboardType: TextInputType.phone,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.teal)),
-                fillColor: Colors.teal,
-                labelText: '',
+            child: TextFormField(
+              decoration: new InputDecoration(
+                fillColor: Colors.grey[200],
+                filled: true,
+                border: new OutlineInputBorder(
+                  borderRadius: new BorderRadius.circular(5.0),
+                  borderSide: BorderSide.none,
+                ),
+                focusedBorder: new OutlineInputBorder(
+                  borderRadius: new BorderRadius.circular(10.0),
+                  borderSide: new BorderSide(color: Theme.of(context).primaryColor, width: 2.0),
+                ),
               ),
+              validator: (val) {
+                if (val.length == 0) {
+                  return "You must select bank";
+                } else {
+                  return null;
+                }
+              },
+              keyboardType: TextInputType.text,
+              
             ),
           ),
           Row(
@@ -183,7 +224,7 @@ class _WithdrawFundState extends State<WithdrawFund> {
                 child: Container(
                   margin: EdgeInsets.only(top: 4, left: 15),
                   child: Text(
-                    'Select bank',
+                    'Enter your Loan PIN',
                     style: TextStyle(
                       fontSize: 15,
                       color: Colors.black87,
@@ -195,17 +236,30 @@ class _WithdrawFundState extends State<WithdrawFund> {
               ),
             ],
           ),
-          Container(
+           Container(
             padding: EdgeInsets.only(left: 15, right: 15, top: 5),
-            child: TextField(
-              obscureText: true,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.teal)),
-                fillColor: Colors.teal,
-                labelText: '',
+            child: TextFormField(
+              decoration: new InputDecoration(
+                fillColor: Colors.grey[200],
+                filled: true,
+                border: new OutlineInputBorder(
+                  borderRadius: new BorderRadius.circular(5.0),
+                  borderSide: BorderSide.none,
+                ),
+                focusedBorder: new OutlineInputBorder(
+                  borderRadius: new BorderRadius.circular(10.0),
+                  borderSide: new BorderSide(color: Theme.of(context).primaryColor, width: 2.0),
+                ),
               ),
+              validator: (val) {
+                if (val.length == 0) {
+                  return "You must enter PIN";
+                } else {
+                  return null;
+                }
+              },
+              keyboardType: TextInputType.number,
+              
             ),
           ),
           const SizedBox(height: 40),
@@ -224,10 +278,7 @@ class _WithdrawFundState extends State<WithdrawFund> {
               ),
               child: Text(
                 "Complete Withdrawal",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    fontSize: 20),
+                style: Theme.of(context).textTheme.button,
               ),
               onPressed: () {
                 _settingModalBottomSheet(context);
@@ -273,11 +324,12 @@ class _WithdrawFundState extends State<WithdrawFund> {
 
   void _settingModalBottomSheet(context) {
     showModalBottomSheet(
+      isDismissible: false,
       context: context,
       backgroundColor: Colors.transparent,
       builder: (BuildContext bc) {
         return Container(
-          height: 160,
+          height: 260,
           margin: EdgeInsets.only(right: 5, left: 5),
           decoration: BoxDecoration(
         color: Colors.white,
@@ -291,9 +343,17 @@ class _WithdrawFundState extends State<WithdrawFund> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Icon(Icons.check),
+              Image.asset("assets/images/check_ic_lg.png", height: 50.0, width: 50.0,),
               const SizedBox(height: 10),
-              Text('Withdrawal Successfully', style: TextStyle(fontSize: 22), textAlign: TextAlign.center,),
+              Container(
+                margin: EdgeInsets.fromLTRB(60, 10, 60, 20),
+                width: 180.0,
+                  child: Text(
+                'Withdrawal Successfully',
+                style: TextStyle(fontSize: 22),
+                softWrap: true,
+                textAlign: TextAlign.center,
+              )),
               Container(
                 width: double.infinity,
                 margin: EdgeInsets.fromLTRB(15, 0, 15, 0),

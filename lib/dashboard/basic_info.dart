@@ -9,31 +9,27 @@ class _BasicInfoState extends State<BasicInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.grey[50],
+        elevation: 0.0,
+        leading: IconButton(
+          color: Colors.black,          
+          iconSize: 30.0,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.close),
+        ),
+      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(8),
         child: Column(children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              //Icon(Icons.favorite),
-              Container(
-                margin: EdgeInsets.only(top: 20),
-                child: IconButton(
-                  color: Colors.black,
-                  iconSize: 30.0,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: Icon(Icons.close),
-                ),
-              ),
-            ],
-          ),
+         
           Row(
             children: [
               Container(
-                margin: EdgeInsets.only(top: 20, left: 15),
+                margin: EdgeInsets.only(left: 15),
                 child: Text(
                   'Basic Information',
                   style: TextStyle(
@@ -209,6 +205,51 @@ class _BasicInfoState extends State<BasicInfo> {
               ),
             ),
           ),
+          Container(child:Row(children: <Widget>[
+            RaisedButton(
+              padding: EdgeInsets.all(16),
+              highlightElevation: 5.0,
+              elevation: 3.0,
+              splashColor: Colors.teal[300],
+              highlightColor: Colors.teal[300],
+              color: Color.fromRGBO(45, 157, 127, 1),
+              shape: RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(10.0),
+              ),
+              child: Text(
+                "Update",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontSize: 20),
+              ),
+              onPressed: () {
+                _settingModalBottomSheet(context);
+              },
+            ),
+            RaisedButton(
+              padding: EdgeInsets.all(16),
+              highlightElevation: 5.0,
+              elevation: 3.0,
+              splashColor: Colors.teal[300],
+              highlightColor: Colors.teal[300],
+              color: Color.fromRGBO(45, 157, 127, 1),
+              shape: RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(10.0),
+              ),
+              child: Text(
+                "Update",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontSize: 20),
+              ),
+              onPressed: () {
+                _settingModalBottomSheet(context);
+              },
+            ),
+
+          ],)),
           const SizedBox(height: 40),
           Container(
             width: double.infinity,

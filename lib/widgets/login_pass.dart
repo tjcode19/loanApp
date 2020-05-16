@@ -27,9 +27,9 @@ class _LoginPassState extends State<LoginPass> {
               children: [
                 //Icon(Icons.favorite),
                 Container(
-                  margin: EdgeInsets.only(top: 70, left: 20),
+                  margin: EdgeInsets.only(top: 40,),
                   child: IconButton(
-                    color: Colors.black,
+                    color: Colors.white,
                     iconSize: 34.0,
                     onPressed: () {
                       Navigator.pop(context);

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:loan_app/constants.dart';
 import 'package:loan_app/widgets/login.dart';
 import 'dashboard_home.dart';
 import 'dashboard_loan.dart';
@@ -67,7 +66,7 @@ class _DashboardState extends State<Dashboard> {
       onWillPop: _onBackPressed,
       child: Scaffold(       
         body: AnnotatedRegion<SystemUiOverlayStyle>(
-          value: SystemUiOverlayStyle.light.copyWith( statusBarColor: Colors.white, ), 
+          value: SystemUiOverlayStyle.light.copyWith( statusBarColor: Colors.teal, ), 
                   child: Container(
               child: IndexedStack(
             index: _selectedIndex,

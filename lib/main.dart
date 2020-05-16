@@ -15,16 +15,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    // SystemChrome.setSystemUIOverlayStyle(
-    //   SystemUiOverlayStyle(
-    //     // systemNavigationBarColor: Theme.of(context).primaryColor, // navigation bar color
-    //     statusBarColor: Colors.teal[100], // status bar color
-    //     //systemNavigationBarIconBrightness: Brightness.light
-    //   ),
-    // );
-
+    
     return MaterialApp(
-      
       title: 'Loan App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -34,8 +26,17 @@ class MyApp extends StatelessWidget {
         highlightColor: Colors.teal[500],
         fontFamily: "Nunito",
         accentColor: Colors.teal[100],
-        cursorColor: Colors.teal[500],
+        cursorColor: Colors.teal[500],    
+        textTheme: TextTheme(
+          button: TextStyle(
+            color: Colors.white,
+            fontSize: 18.0,
+          ),
+          
+          
+        ),
       ),
+
       onGenerateRoute: router.generateRoute,
       initialRoute: loginRoute,
       // home: Login(),
